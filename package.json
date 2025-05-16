@@ -1,0 +1,22 @@
+{
+  "name": "trello-api",
+  "version": "1.0.0",
+  "description": "HuuNguyen",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XuanHuu2906/trello-api.git"
+  },
+  "author": "Huu Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XuanHuu2906/trello-api/issues"
+  },
+  "homepage": "https://github.com/XuanHuu2906/trello-api#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
