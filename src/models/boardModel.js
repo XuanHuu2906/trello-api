@@ -40,9 +40,28 @@ const createNew = async (data) => {
 }
 
 const findOnebyId = async (id) => {
+  if (!ObjectId.isValid(id)) {
+    throw new Error(`Invalid ObjectId: "${id}"`)
+  }
   try {
     const result = await GET_DB().collection(BOARD_COLLECTION_NAME).findOne({
-      _id: new ObjectId(toString(id))
+      _id: new ObjectId(id.toString())
+    })
+    return result
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+// Querry tổng hợp (aggregate) để lấy toàn bộ Columns và Card thuộc về Board
+const getDetails = async (id) => {
+  if (!ObjectId.isValid(id)) {
+    throw new Error(`Invalid ObjectId: "${id}"`)
+  }
+  try {
+    const result = await GET_DB().collection(BOARD_COLLECTION_NAME).findOne({
+      _id: new ObjectId(id.toString())
+
     })
     return result
   } catch (error) {
@@ -54,5 +73,6 @@ export const boardModel = {
   BOARD_COLLECTION_NAME,
   BOARD_COLLECTION_SCHEMA,
   createNew,
-  findOnebyId
+  findOnebyId,
+  getDetails
 }

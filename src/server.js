@@ -24,7 +24,7 @@ const START_SERVER = () => {
   app.use(errorHandlingMiddleware)
 
   app.listen(env.APP_PORT, env.APP_HOST, () => {
-    console.log(`3.Hello ${env.AUTHOR}, I am running at htpp://${ env.APP_HOST }:${ env.APP_PORT }/`)
+    console.log(`3.Hello ${env.AUTHOR}, I am running at http://${ env.APP_HOST }:${ env.APP_PORT }/`)
   })
 
   // sử dụng exitHook để thoát khỏi database
@@ -36,7 +36,7 @@ const START_SERVER = () => {
 (async() => {
   try {
     console.log('1.Connecting to MongoDB Atlas')
-    CONNECT_DB()
+    await CONNECT_DB()
     console.log('2.Connected to MongoDB Atlas!')
     START_SERVER()
   } catch (error) {
