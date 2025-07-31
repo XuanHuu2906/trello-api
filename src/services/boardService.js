@@ -38,6 +38,7 @@ const getDetails = async (boardId) => {
     const resBoard = cloneDeep(board)
     // Đưa card về đúng column của nó
     resBoard.columns.forEach(column => {
+      // Cách dùng .equals này là bởi vì chúng ta hiểu ObjectId trong mongoDB có support method .equals
       column.cards = resBoard.cards.filter(card => card.columnId.equals(column._id))
 
       // column.cards = resBoard.cards.filter(card => card.columnId.toString() === column._id.toString())
