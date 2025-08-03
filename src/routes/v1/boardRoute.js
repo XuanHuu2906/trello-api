@@ -1,9 +1,3 @@
-/**
- * Updated by trungquandev.com's author on August 17 2023
- * YouTube: https://youtube.com/@trungquandev
- * "A bit of fragrance clings to the hand that gives flowers!"
- */
-
 import express from 'express'
 import { StatusCodes } from 'http-status-codes'
 import { boardValidation } from '~/validations/boardValidation'
@@ -13,11 +7,11 @@ const Route = express.Router()
 
 Route.route('/')
   .get((req, res) => {
-    res.status(StatusCodes.OK).json({ message: 'Note: API get list board.'})
+    res.status(StatusCodes.OK).json({ message: 'Note: API get list board.' })
   })
   .post(boardValidation.createNew, boardController.createNew)
 
 Route.route('/:id')
   .get(boardController.getDetails)
-  .put()
+  .put(boardValidation.update, boardController.update)
 export const boardRoute = Route
